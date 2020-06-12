@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="lib/img/PORTADA.png">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/css/ss.css" rel='stylesheet'>
+    <link href="lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        #editor {
+            white-space: pre;
+            word-wrap: normal;
+        }
+    </style>
+
+</head>
+
+<body class="home">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                <div class="logo">
+                    <a hef="home.html"><img src="lib/img/ENCABEZADO.png" alt="merkery_logo" class="hidden-xs hidden-sm">
+                        <img src="lib/img/ENCABEZADO.png" alt="merkery_logo" class="visible-xs visible-sm ">
+                    </a>
+                </div>
+                <div class="navi">
+                    <ul style="padding-left: 0px;">
+                        <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li><a href="notificaciones.html"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Notificaciones</span></a></li>
+                        <li><a href="usuarios.html"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Usuarios</span></a></li>
+                        <li><a href="dispositivos.html"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Dispositivos</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <div class="row">
+                    <header>
+                        <div class="col-md-7">
+                            <nav class="navbar-default pull-left">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="header-rightside">
+                                <ul class="list-inline header-top pull-right">
+                                    <!-- <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Add Project</a></li> -->
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="lib/img/user.svg" alt="user">
+                                            <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="navbar-content">
+                                                    <span>Usuario</span>
+                                                    <p class="text-muted small">
+                                                        usuario@correo.com
+                                                    </p>
+                                                    <div class="divider">
+                                                    </div>
+                                                    <a href="index.html" class="view btn-sm active">Cerrar sesión</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="user-dashboard">
+                    <h1>Home</h1>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 col-md-6">
+                            <button class='btn' style="background-color: transparent" id='addButton'>
+                                <img width="15%" src="lib/img/add1.png"> Agregar un sitio
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-md-6">
+                            <button class='btn' style="background-color: transparent" id='removeButton'>
+                                <img width="15%" src="lib/img/cancel1.png"> Cancelar un sitio
+                                </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div id='TextBoxesGroup'>
+                                <div id="TextBoxDiv1">
+                                    <div class="col-lg-4 col-sm-4 col-md-4">
+                                        <button ondblclick="myFunction()" class="btn" style="background-color: transparent">
+                                            <img width="10%" src="lib/img/location-pin.png"><h3 id='result' id="editor" contenteditable="true">Escriba el nombre del sitio</h3>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="lib/js/jquery-3.4.1.min.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    function myFunction() {
+        localStorage.setItem("sitio1", $("#result").text());
+        location.href = "sitio.html";
+    }
+
+    $(document).ready(function() {
+
+        // LLAMAR LOCALSTORAGE
+        // Check browser support
+        if (typeof(Storage) !== "undefined") {
+            // SI EXISTE
+            if (localStorage.getItem("sitio1") === null) {
+                localStorage.setItem("sitio1", "Escribe el nombre del sitio");
+                // Retrieve
+                document.getElementById("result").innerHTML = localStorage.getItem("sitio1");
+            } else {
+                document.getElementById("result").innerHTML = localStorage.getItem("sitio1");
+            }
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
+
+
+        var counter = 2;
+
+        $("#addButton").click(function() {
+
+            if (counter > 9) {
+                return false;
+            }
+            var newTextBoxDiv = $(document.createElement('div'))
+                .attr("id", 'TextBoxDiv' + counter);
+            if (counter === 1) {
+
+            } else {
+                newTextBoxDiv.after().html('<div class="col-lg-4 col-sm-4 col-md-4">' +
+                    '<button id="button' + counter + '" class="btn" style="background-color: transparent">' +
+                    '<img width="10%" src="lib/img/location-pin.png"><h3>Sitio # ' + counter + ' </h3>' +
+                    '</button>' +
+                    ' </div>');
+                counter++;
+            }
+            newTextBoxDiv.appendTo("#TextBoxesGroup");
+
+        });
+
+        $("#removeButton").click(function() {
+            if (counter == 2) {
+                return false;
+            }
+            counter--;
+            $("#TextBoxDiv" + counter).remove();
+        });
+
+    });
+
+    // MENU
+    $(document).ready(function() {
+        $('[data-toggle="offcanvas"]').click(function() {
+            $("#navigation").toggleClass("hidden-xs");
+        });
+    });
+</script>
+
+</html>
