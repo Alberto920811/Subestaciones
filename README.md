@@ -1,9 +1,8 @@
 # Subestaciones
-Desarrollo de dashboards para cpntrol y monitoreo de variables de subestaciones electricas
+Desarrollo de dashboards para control y monitoreo de variables de subestaciones electricas
 ----------------------------------------------------------------------
-![Screenshot](232.jpg)
+![Screenshot](121.JPG)
 ----------------------------------------------------------------------
-![Screenshot](121.jpg)
+![Screenshot](212.JPG)
 ----------------------------------------------------------------------
-![Screenshot](212.jpg	)
-
+![Screenshot](232.JPG)
